@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jairo Campo — AI Systems Builder</title>
+<meta name="description" content="Jairo Campo — I design, build and ship real AI systems: conversational agents, business-rule engines and secure AI products. Not just prompts." />
+<!--
+  ============================================================
+  HOW TO ADD YOUR SCREENSHOTS / GIFS
+  Each case study has a box that says "ADD SCREENSHOT / GIF HERE".
+  To add an image:
+    1. Save your image (PNG, JPG or GIF) in the SAME folder as this file.
+    2. Find the matching <div class="shot"> ... </div> block below.
+    3. Replace the whole inner content with:
+         <img src="my-image-name.png" alt="Short description" />
+  Tip: blur or cover anything sensitive (API keys, real patient data) before exporting.
+  ============================================================
+-->
+<style>
+  :root{
+    --bg:#0b1020;
+    --bg-soft:#11182e;
+    --card:#141c34;
+    --card-2:#0f1730;
+    --text:#e8edf7;
+    --muted:#9aa6c0;
+    --line:#243152;
+    --accent:#6c8cff;
+    --accent-2:#46e0c0;
+    --radius:18px;
+    --maxw:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(1200px 700px at 50% -200px,#1a2b55 0,transparent 60%),var(--bg);
+    background-color:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:20;
+    backdrop-filter:saturate(140%) blur(10px);
+    background:rgba(11,16,32,.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{font-weight:700;letter-spacing:.2px;}
+  .brand span{color:var(--accent);}
+  .navlinks{display:flex;gap:22px;font-size:14px;color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  @media(max-width:620px){.navlinks{display:none;}}
+
+  /* HERO */
+  header.hero{padding:84px 0 56px;}
+  .eyebrow{
+    display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-2);font-weight:700;margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(34px,6vw,58px);line-height:1.05;margin:0 0 18px;
+    letter-spacing:-.02em;font-weight:800;
+  }
+  h1 .grad{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lead{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:720px;margin:0 0 26px;}
+  .lead strong{color:var(--text);}
+  .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;
+    font-weight:600;font-size:15px;border:1px solid var(--line);transition:.15s;
+  }
+  .btn.primary{background:linear-gradient(90deg,var(--accent),#7a6cff);border-color:transparent;color:#fff;}
+  .btn.primary:hover{transform:translateY(-2px);}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--text);}
+  .facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+  .fact{
+    font-size:13.5px;color:var(--muted);background:var(--bg-soft);
+    border:1px solid var(--line);padding:8px 13px;border-radius:999px;
+  }
+  .fact b{color:var(--text);font-weight:600;}
+
+  /* SECTION HEADINGS */
+  .section{padding:54px 0;}
+  .section-label{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px;}
+  h2{font-size:clamp(24px,4vw,34px);margin:0 0 8px;letter-spacing:-.01em;font-weight:800;}
+  .section-sub{color:var(--muted);max-width:680px;margin:0 0 6px;}
+
+  /* CASE STUDIES */
+  .case{
+    background:linear-gradient(180deg,var(--card),var(--card-2));
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:0;margin:26px 0;overflow:hidden;
+  }
+  .case-head{padding:30px 30px 4px;}
+  .case-kicker{font-size:13px;font-weight:700;color:var(--accent-2);letter-spacing:.06em;text-transform:uppercase;}
+  .case h3{font-size:clamp(21px,3.4vw,27px);margin:8px 0 6px;font-weight:800;letter-spacing:-.01em;}
+  .case .role{font-size:14px;color:var(--muted);margin:0 0 14px;}
+  .case .role b{color:var(--accent);}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;}
+  .tag{font-size:12.5px;color:#cdd7f2;background:#1a2444;border:1px solid #2a3760;padding:5px 11px;border-radius:8px;}
+
+  /* SHOT placeholder */
+  .shot{
+    margin:22px 30px;border:1.5px dashed #34406b;border-radius:14px;
+    min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;color:#6f7da6;background:repeating-linear-gradient(45deg,#0e1630,#0e1630 12px,#101a38 12px,#101a38 24px);
+    padding:24px;
+  }
+  .shot img{max-width:100%;height:auto;border-radius:12px;display:block;}
+  .shot .ico{font-size:30px;margin-bottom:8px;opacity:.7;}
+  .shot small{font-size:12px;opacity:.8;max-width:340px;}
+
+  /* case grid blocks */
+  .blocks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);margin-top:8px;}
+  @media(max-width:640px){.blocks{grid-template-columns:1fr;}}
+  .block{background:var(--card-2);padding:22px 30px;}
+  .block h4{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .block p{margin:0;color:#c4cde6;font-size:15px;}
+  .block.wide{grid-column:1 / -1;}
+  .block ul{margin:0;padding-left:18px;color:#c4cde6;font-size:15px;}
+  .block ul li{margin:4px 0;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;}
+  .panel p{color:#c4cde6;}
+  .panel h4{color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px;}
+  .skill-row{display:flex;flex-wrap:wrap;gap:8px;}
+
+  /* CONTACT */
+  .contact{
+    text-align:center;background:linear-gradient(180deg,var(--card),var(--card-2));
+    border:1px solid var(--line);border-radius:var(--radius);padding:48px 28px;margin:10px 0 0;
+  }
+  .contact h2{margin-bottom:6px;}
+  .contact p{color:var(--muted);max-width:520px;margin:0 auto 24px;}
+  .contact .cta{justify-content:center;}
+
+  footer{padding:40px 0 56px;text-align:center;color:#5e6a8c;font-size:13px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Jairo <span>Campo</span></div>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">AI &amp; Automation</span>
+    <h1>I build <span class="grad">real AI systems</span>—<br/>not just prompts.</h1>
+    <p class="lead">
+      I'm Jairo Campo, a Business Administration graduate (Universidad de los Andes) and
+      Business Operations Analyst. I design, spec and ship working AI products: conversational
+      agents with hard business rules, secure AI-backed web apps, and automation that solves a
+      real operational problem. I <strong>direct AI-assisted development end to end</strong>—from
+      the architecture decision to the passing test suite.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#work">View my work ↓</a>
+      <a class="btn ghost" href="mailto:jairoc2580@gmail.com">Email me</a>
+    </div>
+    <div class="facts">
+      <span class="fact"><b>U.S. Permanent Resident</b></span>
+      <span class="fact"><b>Business Operations</b> Analyst</span>
+      <span class="fact">Uniandes — <b>Business Administration</b></span>
+      <span class="fact">Builds with <b>Python · TypeScript · React · Claude API</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== WORK ===================== -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-label">Selected Work</div>
+    <h2>Case studies</h2>
+    <p class="section-sub">Three systems I worked on hands-on. Each one is a real codebase—not a slide.</p>
+
+    <!-- CASE 1: RECEPTIONIST -->
+    <article class="case">
+      <div class="case-head">
+        <div class="case-kicker">Conversational AI · Healthcare</div>
+        <h3>AI Receptionist for a Dental Clinic</h3>
+        <p class="role">My role: <b>Sole builder</b> — requirements, architecture, implementation, tests.</p>
+        <div class="tags">
+          <span class="tag">Python 3.12</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">Finite-State Machine</span>
+          <span class="tag">Business-Rule Engine</span>
+          <span class="tag">YAML-driven config</span>
+          <span class="tag">63 tests</span>
+        </div>
+      </div>
+
+      <div class="shot">
+        <!-- ADD SCREENSHOT / GIF HERE -->
+        <div class="ico">📱</div>
+        <strong>Add screenshot / GIF here</strong>
+        <small>Suggestion: a short screen recording of the console chat booking a first visit and refusing an invalid slot.</small>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h4>Problem</h4>
+          <p>A clinic with 15 years of operation and zero automation was losing first-visit bookings: no one could consistently answer, triage urgencies and schedule around complex rules (a doctor who rotates between two countries, orthodontics only on Wednesdays, booking windows, legal consent).</p>
+        </div>
+        <div class="block">
+          <h4>What I built</h4>
+          <p>A conversational AI receptionist that answers FAQs, books first valuations, detects emergencies and escalates them, and enforces every business rule of the clinic—running fully in mock mode at zero API cost, then switching to the real model with no code change.</p>
+        </div>
+        <div class="block">
+          <h4>Architecture &amp; stack</h4>
+          <p>Python (managed with <code>uv</code>), cleanly modularized: an FSM for conversation state, an intent detector with a heuristic fallback, a <em>separate</em> rule engine, YAML knowledge files editable without touching code, and a dual MOCK/real-API LLM wrapper. A consent flow implements Colombia's data-protection law (Habeas Data).</p>
+        </div>
+        <div class="block">
+          <h4>The hard part &amp; how I solved it</h4>
+          <p>Stopping the LLM from "hallucinating" appointments. My fix: <strong>the business rules live in code, not in the prompt.</strong> The model only adds natural language; the code decides if, when and at what time a booking is valid. Emergencies always escalate to a human—never auto-booked.</p>
+        </div>
+        <div class="block wide">
+          <h4>Result</h4>
+          <p>A working end-to-end MVP with <strong>63 passing tests</strong>, validated in mock mode (US$0) and ready to run against the live model by adding one API key. Designed as the validation step before connecting WhatsApp and the clinic's scheduling software.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 2: SAAS -->
+    <article class="case">
+      <div class="case-head">
+        <div class="case-kicker">Full-Stack SaaS · Operations</div>
+        <h3>AI Process-Mapping SaaS for SMBs</h3>
+        <p class="role">My role: <b>Sole builder</b> — product design, architecture, methodology, full-stack build.</p>
+        <div class="tags">
+          <span class="tag">React + Vite</span>
+          <span class="tag">Tailwind</span>
+          <span class="tag">Node / Express</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">JWT + bcrypt</span>
+          <span class="tag">Claude API (structured output)</span>
+          <span class="tag">SVG visualization</span>
+        </div>
+      </div>
+
+      <div class="shot">
+        <!-- ADD SCREENSHOT / GIF HERE -->
+        <div class="ico">🗺️</div>
+        <strong>Add screenshot / GIF here</strong>
+        <small>Suggestion: the interactive swimlane diagram + the metrics/recommendations panel. This is the visually strongest shot you have.</small>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h4>Problem</h4>
+          <p>Small businesses can't afford traditional operations consultants, yet they have no clear view of where they lose time and money—bottlenecks, waits and rework hide inside everyday processes.</p>
+        </div>
+        <div class="block">
+          <h4>What I built</h4>
+          <p>A full web app that turns what employees describe into a process map (swimlane diagram) with bottlenecks, waits, rework, metrics, insights and prioritized recommendations—grounded in real consulting methodology, not generic AI output.</p>
+        </div>
+        <div class="block">
+          <h4>Architecture &amp; stack</h4>
+          <p>React + Vite + Tailwind front end; Node/Express back end; SQLite; multi-company accounts with JWT + bcrypt auth and an admin panel. The Claude API key lives <strong>only on the back end</strong> behind a secure proxy—the piece that makes it a sellable product, not a toy.</p>
+        </div>
+        <div class="block">
+          <h4>The hard part &amp; how I solved it</h4>
+          <p>Making AI output trustworthy and consistently structured. I grounded the prompts in established methodologies (SIPOC, Lean, Theory of Constraints, DMAIC) and used <strong>structured outputs</strong> to guarantee the format, then rendered the result as an interactive SVG swimlane with click-through detail.</p>
+        </div>
+        <div class="block wide">
+          <h4>Result</h4>
+          <p>Works end to end locally in both dev and production builds, with a seeded demo company and PDF export. A "demo mode" runs the whole experience with no API key, so anyone can try it instantly. Screenshots verified across the full flow.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 3: JARVIS (HONEST) -->
+    <article class="case">
+      <div class="case-head">
+        <div class="case-kicker">Production AI Architecture · Deep-Dive</div>
+        <h3>Multi-Tenant WhatsApp AI Assistant Platform</h3>
+        <p class="role">My role: <b>Contributor &amp; technical deep-dive</b> — studying and documenting a live, production-grade system.</p>
+        <div class="tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Postgres RLS</span>
+          <span class="tag">AWS (Aurora · KMS · Amplify)</span>
+          <span class="tag">Twilio + Baileys</span>
+          <span class="tag">Multi-tenant</span>
+          <span class="tag">Tool gateway</span>
+        </div>
+      </div>
+
+      <div class="shot">
+        <!-- ADD SCREENSHOT / GIF HERE -->
+        <div class="ico">🧠</div>
+        <strong>Add diagram / screenshot here</strong>
+        <small>Suggestion: a clean architecture diagram (the two-server topology). Avoid showing anything that isn't your own contribution.</small>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h4>What it is</h4>
+          <p>A multi-tenant platform that delivers a personal AI assistant entirely through WhatsApp—no app to install—with persistent memory, scheduled routines and access to external tools. Each user is isolated, with their own encrypted API key.</p>
+        </div>
+        <div class="block">
+          <h4>My contribution</h4>
+          <p>I joined this live system to learn and contribute. I studied the codebase and produced clear architecture documentation that the team uses for onboarding—translating a complex production system into something a new contributor can navigate.</p>
+        </div>
+        <div class="block wide">
+          <h4>Why it's on this page</h4>
+          <p>It shows I can read, reason about and operate inside <strong>real production AI infrastructure</strong>—multi-tenant Postgres row-level security, per-tenant bring-your-own-key model, three-layer KMS envelope encryption, a sandboxed tool gateway for prompt-injection mitigation, two interchangeable WhatsApp channels, and a unified run/trigger model—not just isolated demos.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-label">About</div>
+    <h2>Why work with me</h2>
+    <div class="about-grid" style="margin-top:22px;">
+      <div class="panel">
+        <h4>The short version</h4>
+        <p>
+          I sit at the intersection of <strong>business operations and AI engineering</strong>.
+          My background is Business Administration (Universidad de los Andes) and hands-on
+          Business Operations analysis—so I start from the problem and the money, not the model.
+          Then I actually build: I direct AI-assisted development to ship working systems with
+          real architecture, real tests, and guardrails that keep the AI honest.
+        </p>
+        <p>
+          What you get is someone who can sit in a stakeholder interview, extract the rules,
+          translate them into a shippable system, and explain every design decision behind it.
+        </p>
+      </div>
+      <div class="panel">
+        <h4>Toolbox</h4>
+        <div class="skill-row">
+          <span class="tag">Python</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Node / Express</span>
+          <span class="tag">Claude / LLM APIs</span>
+          <span class="tag">Structured outputs</span>
+          <span class="tag">SQLite / Postgres</span>
+          <span class="tag">JWT / bcrypt</span>
+          <span class="tag">Git</span>
+          <span class="tag">Business-rule design</span>
+          <span class="tag">Process mapping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="section-label" style="text-align:center;">Get in touch</div>
+      <h2>Let's build something real</h2>
+      <p>Open to AI / automation roles where I can design and ship systems end to end.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:jairoc2580@gmail.com">jairoc2580@gmail.com</a>
+        <a class="btn ghost" href="https://linkedin.com/in/jairocampo" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Jairo Campo · Built, not generated.
+</footer>
+
+</body>
+</html>
